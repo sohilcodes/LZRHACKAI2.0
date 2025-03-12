@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Prediction Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: yellow;
+        }
+        .container {
+            margin-top: 100px;
+            padding: 20px;
+            background: white;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+        input {
+            padding: 10px;
+            font-size: 1.2rem;
+            width: 200px;
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Login</h1>
+    <div class="container">
+        <h2>Enter Your Credentials:</h2>
+        <input type="email" id="email" placeholder="Enter Email">
+        <br>
+        <input type="password" id="password" placeholder="Enter Password">
+        <br>
+        <button class="btn" onclick="checkLogin()">Login</button>
+    </div>
+
+    <script>
+        function checkLogin() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let users = JSON.parse(localStorage.getItem("users")) || {};
+
+            if (users[email] && users[email] === password) {
+                alert("Login Successful!");
+                window.location.href = "prediction.html";
+            } else {
+                alert("Invalid Email or Password!");
+            }
+        }
+    </script>
+
+</body>
+</html>
