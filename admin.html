@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - User Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: yellow;
+        }
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            background: white;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+        input {
+            padding: 10px;
+            font-size: 1.2rem;
+            width: 200px;
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Admin Panel</h1>
+    <div class="container">
+        <h2>Add New User:</h2>
+        <input type="email" id="newEmail" placeholder="Enter Email">
+        <br>
+        <input type="password" id="newPassword" placeholder="Enter Password">
+        <br>
+        <button class="btn" onclick="addUser()">Create User</button>
+        <p id="status"></p>
+    </div>
+
+    <script>
+        function addUser() {
+            let email = document.getElementById("newEmail").value;
+            let password = document.getElementById("newPassword").value;
+
+            if (!email || !password) {
+                alert("Please fill both fields.");
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem("users")) || {};
+            users[email] = password;
+            localStorage.setItem("users", JSON.stringify(users));
+
+            document.getElementById("status").innerText = "User Created Successfully!";
+        }
+    </script>
+
+</body>
+</html>
