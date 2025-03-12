@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: yellow;
+        }
+        .container {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+        .logo {
+            width: 100px;
+            margin-top: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 1.2rem;
+            width: 120px;
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        .prediction {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .big { color: red; }
+        .small { color: green; }
+        .red { color: red; }
+        .green { color: green; }
+    </style>
+</head>
+<body>
+
+    <img src="https://cdn.glitch.global/f64a7dcf-abf6-4af4-b94a-17e4609e9f00/20250312_123434.png?v=1741769605613" class="logo" alt="Logo">
+    <h1>Color Prediction Tool</h1>
+
+    <div class="container">
+        <h2>Enter Last 3 Digits:</h2>
+        <input type="text" id="inputNumber" maxlength="3" oninput="validateInput()" placeholder="123">
+        <br>
+        <button class="btn" onclick="generatePrediction()">Prediction</button>
+        <div id="predictionResult" class="prediction">Waiting for input...</div>
+
+        <br><br>
+        <button class="btn" onclick="window.location.href='https://btwwin.me/#/register?invitationCode=65832330505'">Register Link</button>
+        <button class="btn" onclick="window.location.href='https://t.me/+IN9oJJk-ildhNzg1'">Join Now</button>
+    </div>
+
+    <script>
+        function validateInput() {
+            let input = document.getElementById("inputNumber");
+            input.value = input.value.replace(/[^0-9]/g, '').slice(0, 3);
+        }
+
+        function generatePrediction() {
+            let size = Math.random() > 0.5 ? "Big" : "Small";
+            let color = Math.random() > 0.5 ? "Red" : "Green";
+            document.getElementById("predictionResult").innerHTML = 
+                `<span class="${size.toLowerCase()}">${size}</span> - 
+                 <span class="${color.toLowerCase()}">${color}</span>`;
+        }
+    </script>
+
+</body>
+</html>
